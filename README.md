@@ -306,11 +306,3 @@ Vous devez créer les commandes symfony suivantes :
   Ne pas se fier à la date de création, mais bien à celle de publication.
 - Une commande permettant de supprimer toutes les images non rattachées à une annonce créées il y a plus de X jours (X
   étant un argument de la commande).
-
-## Liste des commits :
-```mermaid
-gitGraph
-       commit id: "55e0ff3" tag: "Add initial set of files"
-       commit id: "eda9d4a" tag: "Add webapp packages"
-       commit id: "1c79d0f" tag: "Ajout des catégories"
-```
