@@ -107,7 +107,99 @@ symfony console doctrine:migrations:migrate # peut également être écris "symf
  WARNING! You are about to execute a migration in database "esimed" that could result in schema changes and data loss. Are you sure you wish to continue? (yes/no) [yes]:
  > yes
 ```
-- [ ] Création de l'entité Advert
+- [X] Création de l'entité Advert
+```shell
+symfony console make:entity
+
+ Class name of the entity to create or update (e.g. BraveGnome):
+ > Advert
+ 
+ New property name (press <return> to stop adding fields):
+ > title
+ Field type (enter ? to see all types) [string]:
+ > string
+ Field length [255]:
+ > 100
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > no
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > content
+ Field type (enter ? to see all types) [string]:
+ > text
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > no
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > author
+ Field type (enter ? to see all types) [string]:
+ > string
+ Field length [255]:
+ > 255
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > no
+ 
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > email
+ Field type (enter ? to see all types) [string]:
+ > string
+ Field length [255]:
+ > 255
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > no
+ 
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > category
+ Field type (enter ? to see all types) [string]:
+ > ManyToOne
+ What class should this entity be related to?:
+ > Category
+ Is the Advert.category property allowed to be null (nullable)? (yes/no) [yes]:
+ > no
+ Do you want to add a new property to Category so that you can access/update Advert objects from it - e.g. $category->getAdverts()? (yes/no) [yes]:
+ > yes
+ New field name inside Category [adverts]:
+ > adverts
+ Do you want to automatically delete orphaned App\Entity\Advert objects (orphanRemoval)? (yes/no) [no]:
+ > no
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > price
+ Field type (enter ? to see all types) [string]:
+ > float
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > no
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > state
+ Field type (enter ? to see all types) [string]:
+ > string
+ Field length [255]:
+ > 255
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > no
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > createdAt
+ Field type (enter ? to see all types) [datetime_immutable]:
+ > datetime_immutable
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > no
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ > publishedAt
+ Field type (enter ? to see all types) [datetime_immutable]:
+ > datetime_immutable
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > yes
+```
+```shell
+symfony console make:migration
+symfony console doctrine:migrations:migrate # peut également être écris "symfony console d:m:m"
+
+ WARNING! You are about to execute a migration in database "esimed" that could result in schema changes and data loss. Are you sure you wish to continue? (yes/no) [yes]:
+ > yes
+```
 - [ ] Création de l'entité
   Picture ([VichUploader](https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md))
 - [ ] Création de l'entité [AdminUser](https://symfony.com/doc/current/security.html#the-user)
@@ -211,6 +303,14 @@ Vous devez créer les commandes symfony suivantes :
 - Une commande permettant de supprimer toutes les annonces rejetées, créées il y a X jours (X étant un argument de la
   commande)
 - Une commande permettant de supprimer toutes les annonces publiées il y a X jours (X étant un argument de la commande).
-  Ne pas se fier à la date de création mais bien à celle de publication.
+  Ne pas se fier à la date de création, mais bien à celle de publication.
 - Une commande permettant de supprimer toutes les images non rattachées à une annonce créées il y a plus de X jours (X
-  étant un argument de la commande)
+  étant un argument de la commande).
+
+## Liste des commits :
+```mermaid
+gitGraph
+       commit id: "55e0ff3" tag: "Add initial set of files"
+       commit id: "eda9d4a" tag: "Add webapp packages"
+       commit id: "1c79d0f" tag: "Ajout des catégories"
+```
