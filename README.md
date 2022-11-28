@@ -67,7 +67,7 @@ AdminUser : password - string not null
 ```
 
 - [X] Dans le fichier `.env`, sélectionner la base de données voulue. Choisissons [MySQL](https://www.mysql.com/fr/)
-   obtenu avec [WAMP](https://www.wampserver.com/) :
+  obtenu avec [WAMP](https://www.wampserver.com/) :
 
 ```mysql
 CREATE USER 'esimed'@'localhost' IDENTIFIED WITH mysql_native_password AS 'esimed';
@@ -81,7 +81,8 @@ DATABASE_URL="mysql://esimed:esimed@127.0.0.1:3306/esimed?serverVersion=8&charse
 ```
 
 - [X] Création de l'entité Category (Deux fichiers créés : `src\Entity\Category.php`
-  & `src\Repository\CategoryRepository.php`) : 
+  & `src\Repository\CategoryRepository.php`) :
+
 ```shell
 symfony console make:entity
 
@@ -100,6 +101,7 @@ symfony console make:entity
  Can this field be null in the database (nullable) (yes/no) [no]:
  > no
 ```
+
 ```shell
 symfony console make:migration
 symfony console doctrine:migrations:migrate # peut également être écris "symfony console d:m:m"
@@ -107,7 +109,9 @@ symfony console doctrine:migrations:migrate # peut également être écris "symf
  WARNING! You are about to execute a migration in database "esimed" that could result in schema changes and data loss. Are you sure you wish to continue? (yes/no) [yes]:
  > yes
 ```
+
 - [X] Création de l'entité Advert
+
 ```shell
 symfony console make:entity
 
@@ -193,6 +197,7 @@ symfony console make:entity
  Can this field be null in the database (nullable) (yes/no) [no]:
  > yes
 ```
+
 ```shell
 symfony console make:migration
 symfony console doctrine:migrations:migrate # peut également être écris "symfony console d:m:m"
@@ -200,9 +205,10 @@ symfony console doctrine:migrations:migrate # peut également être écris "symf
  WARNING! You are about to execute a migration in database "esimed" that could result in schema changes and data loss. Are you sure you wish to continue? (yes/no) [yes]:
  > yes
 ```
-- [ ] Création de l'entité
+
+- [X] Création de l'entité
   Picture ([VichUploader](https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md))
-- [ ] Création de l'entité [AdminUser](https://symfony.com/doc/current/security.html#the-user)
+- [X] Création de l'entité [AdminUser](https://symfony.com/doc/current/security.html#the-user)
 
 ## Encodage des mots de passe
 
