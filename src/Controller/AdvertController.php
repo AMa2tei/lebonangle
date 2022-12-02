@@ -62,32 +62,6 @@
 			                     ]);
 		}
 		
-		#[Route('/{id}/edit', name : 'app_advert_edit', methods : ['GET', 'POST'])]
-		public function edit(Request          $request,
-		                     Advert           $advert,
-		                     AdvertRepository $advertRepository): Response
-		{
-			$form = $this->createForm(AdvertType::class,
-			                          $advert);
-			$form->handleRequest($request);
-			
-			if ($form->isSubmitted() &&
-			    $form->isValid()) {
-				$advertRepository->save($advert,
-				                        true);
-				
-				return $this->redirectToRoute('app_advert_index',
-				                              [],
-				                              Response::HTTP_SEE_OTHER);
-			}
-			
-			return $this->renderForm('advert/edit.html.twig',
-			                         [
-				                         'advert' => $advert,
-				                         'form'   => $form,
-			                         ]);
-		}
-		
 		#[Route('/{id}', name : 'app_advert_delete', methods : ['POST'])]
 		public function delete(Request          $request,
 		                       Advert           $advert,

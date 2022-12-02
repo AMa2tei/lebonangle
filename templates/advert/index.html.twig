@@ -17,7 +17,7 @@
 				<th>État</th>
 				<th>Date de création</th>
 				<th>Date de publication</th>
-				<th colspan="2">Actions</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,18 +40,10 @@
 							</button>
 						</a>
 					</td>
-					<td>
-						<a href="{{ path('app_advert_edit', {'id': advert.id}) }}">
-							<button type="button"
-							        class="btn">
-								<i class="bi bi-pencil"></i>
-							</button>
-						</a>
-					</td>
 				</tr>
 			{% else %}
 				<tr>
-					<td colspan="11">Aucune annonce n'a été publiée.</td>
+					<td colspan="10">Aucune annonce n'a été publiée.</td>
 				</tr>
 			{% endfor %}
 		</tbody>

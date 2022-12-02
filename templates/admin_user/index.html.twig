@@ -30,4 +30,69 @@
 			<button>Ajouter un utilisateur</button>
 		</a>
 	</table>
+	<br>
+	<br>
+	<table class="table text-center table-bordered border-dark align-middle">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Titre</th>
+				<th>Contenu</th>
+				<th>Auteur</th>
+				<th>Email</th>
+				<th>Prix</th>
+				<th>État</th>
+				<th>Date de création</th>
+				<th>Date de publication</th>
+				<th colspan="2">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for advert in allAdvert %}
+				<tr>
+					<td>{{ advert.id }}</td>
+					<td>{{ advert.title }}</td>
+					<td>{{ advert.content }}</td>
+					<td>{{ advert.author }}</td>
+					<td>{{ advert.email }}</td>
+					<td>{{ advert.price }}€</td>
+					<td>{{ advert.state }}</td>
+					<td>{{ advert.createdAt ? advert.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+					<td>{{ advert.publishedAt ? advert.publishedAt|date('d/m/Y H:i:s') : '' }}</td>
+					{% if advert.state == 'draft' %}
+						<td>
+							<a href="/admin/validation/publish/{{ advert.id }}">
+								<button type="button"
+								        class="btn">
+									<i class="bi bi-check2"></i>
+								</button>
+							</a>
+						</td>
+						<td>
+							<a href="/admin/validation/reject/{{ advert.id }}">
+								<button type="button"
+								        class="btn">
+									<i class="bi bi-x-lg"></i>
+								</button>
+							</a>
+						</td>
+					{% else %}
+						<td colspan="2">
+							<a href="{{ path('app_advert_show', {'id': advert.id}) }}">
+								<button type="button"
+								        class="btn">
+									<i class="bi bi-eye"></i>
+								</button>
+							</a>
+						</td>
+					{% endif %}
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="11">Aucune annonce n'a été publiée.</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
 {% endblock %}
