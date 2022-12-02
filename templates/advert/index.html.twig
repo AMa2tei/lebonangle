@@ -3,47 +3,68 @@
 {% block title %}Liste des annonces{% endblock %}
 
 {% block body %}
-    <h1>Liste des annonces</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Contenu</th>
-                <th>Auteur</th>
-                <th>Email</th>
-                <th>Prix</th>
-                <th>État</th>
-                <th>Date de création</th>
-                <th>Date de publication</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for advert in adverts %}
-            <tr>
-                <td>{{ advert.id }}</td>
-                <td>{{ advert.title }}</td>
-                <td>{{ advert.content }}</td>
-                <td>{{ advert.author }}</td>
-                <td>{{ advert.email }}</td>
-                <td>{{ advert.price }}</td>
-                <td>{{ advert.state }}</td>
-                <td>{{ advert.createdAt ? advert.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ advert.publishedAt ? advert.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_advert_show', {'id': advert.id}) }}">show</a>
-                    <a href="{{ path('app_advert_edit', {'id': advert.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_advert_new') }}">Create new</a>
+	<h1 class="text-center">Liste des annonces</h1>
+	
+	<table class="table text-center table-bordered border-dark align-middle">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Titre</th>
+				<th>Contenu</th>
+				<th>Auteur</th>
+				<th>Email</th>
+				<th>Prix</th>
+				<th>État</th>
+				<th>Date de création</th>
+				<th>Date de publication</th>
+				<th colspan="2">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for advert in adverts %}
+				<tr>
+					<td>{{ advert.id }}</td>
+					<td>{{ advert.title }}</td>
+					<td>{{ advert.content }}</td>
+					<td>{{ advert.author }}</td>
+					<td>{{ advert.email }}</td>
+					<td>{{ advert.price }}€</td>
+					<td>{{ advert.state }}</td>
+					<td>{{ advert.createdAt ? advert.createdAt|date('d/m/Y H:i:s') : '' }}</td>
+					<td>{{ advert.publishedAt ? advert.publishedAt|date('d/m/Y H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('app_advert_show', {'id': advert.id}) }}">
+							<button type="button"
+							        class="btn">
+								<i class="bi bi-eye"></i>
+							</button>
+						</a>
+					</td>
+					<td>
+						<a href="{{ path('app_advert_edit', {'id': advert.id}) }}">
+							<button type="button"
+							        class="btn">
+								<i class="bi bi-pencil"></i>
+							</button>
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="11">Aucune annonce n'a été publiée.</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	<div class="d-flex justify-content-center">
+		<a href="{{ path('app_advert_new') }}">
+			<button type="button"
+			        class="btn">
+				<h1>
+					<i class="bi bi-plus-circle"></i>
+				</h1>
+			</button>
+		</a>
+	</div>
 {% endblock %}

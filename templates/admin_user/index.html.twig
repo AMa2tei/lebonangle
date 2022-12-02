@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau d'administrateur{% endblock %}
+
+{% block body %}
+	<table class="table text-center table-bordered border-dark align-middle">
+		<tr>
+			<th>Utilisateur</th>
+			<th>Email</th>
+		</tr>
+		{% for admin in allAdmin %}
+			<tr>
+				<td>{{ admin.username }}</td>
+				<td>{{ admin.email }}</td>
+				<td>
+					<a href="/admin/edit/{{ admin.id }}">
+						<button>Modifier</button>
+					</a>
+				</td>
+				{% if admin.email %}
+					<td>
+						<a href="/admin/delete/{{ admin.id }}">
+							<button>Supprimer</button>
+						</a>
+					</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+		<a href="/registration">
+			<button>Ajouter un utilisateur</button>
+		</a>
+	</table>
+{% endblock %}

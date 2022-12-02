@@ -1,4 +1,13 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+<div class="d-flex justify-content-between">
+	{{ include('category/_delete_form.html.twig') }}
+	
+	<div class="d-flex justify-content-center">
+		<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+	</div>
+	
+	<span style="visibility: hidden;"></span>
+</div>
 {{ form_end(form) }}
